@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+**{
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    text-align: center;
+}
+/* Busqueda */
+.search{}
+/*------------------------------------*/
+
+/* Resultados recetas*/
+.resultados_recetas{
+    border: 1px solid cornflowerblue;
+    min-height: 100px;
+    margin: 15px 15px 15px 15px;
+}
+/*---------------------------------------*/
+/* detalles recetas*/
+.detalles_recetas{
+    border: 1px solid rgb(237, 100, 168);
+    min-height: 100px;
+    margin: 15px 15px 15px 15px;
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.imagen{
+    border: 1px solid red;
+}
+.ingredientes{
+    border: 1px solid blue;
+}
+.instrucciones{
+    border: 1px solid green;
+}
+/*---------------------------------------*/
