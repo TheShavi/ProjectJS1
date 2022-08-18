@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/estilos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="js/myscript.js"></script>
     <title>Buscador</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
                         <button class="btn btn-primary" type="submit">Buscar receta</button>
                     </div>  
                     <div class="col-md-2">
-                        <button class="btn btn-primary" type="submit">Receta aleatoria</button>
+                        <button class="btn btn-primary" type="submit" onclick="Random();">Receta aleatoria</button>
                     </div> 
                 </form>
             </article>
@@ -44,14 +45,17 @@
                 
             </article>
             <article class="detalles_recetas">
-                <article class="imagen">
-                    <h3>Imagen de la receta</h3>
+                <article >
+                    <h3 id="title"></h3>
                 </article>
-                <article class="ingredientes">
-                    <h3>Ingredientes</h3>
+                <article >
+                    <img id="thumb" >
                 </article>
-                <article class="instrucciones">
-                    <h3>Instrucciones</h3>
+                <article id="ingredients">
+                    <h3></h3>
+                </article>
+                <article id="instructions">
+                    <h3></h3>
                 </article>
             </article>
         </div>
