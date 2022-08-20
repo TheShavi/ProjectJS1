@@ -1,29 +1,64 @@
-let rand_url = 'https://themealdb.com/api/json/v1/1/random.php';
+// Método para obtener una receta al azar
+async function Random() {
 
-    // Método para obtener una menú al azar
-    async function Random(){
-        const response = await fetch(rand_url);
-        const data = await response.json();
+    let rand_url = 'https://themealdb.com/api/json/v1/1/random.php';
+    const response = await fetch(rand_url);
+    const data = await response.json();
 
-        const {meals, idMeal, strMeal, strCategory, strInstructions, strMealThumb, strYoutube, 
-            strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, 
-            strIngredient12, strIngredient13, strIngredient14, strIngredient15, strIngredient16, strIngredient17, strIngredient18,
-            strIngredient19, strIngredient20 } = data.meals[0];
-        
-        // Agrega la imagen de la receta
-        const img = document.getElementById('thumb').src = strMealThumb;
+    const { meals, idMeal, strMeal, strCategory, strInstructions, strMealThumb, strYoutube } = data.meals[0];
 
-        // Agrega el titulo de la receta
-        const title = document.getElementById('title').textContent = strMeal;
+    //Conviriendo los contenidos de Json en un array
+    mealArray = Object.values(data.meals[0]);
 
-        // Agrega las instrucciones de preparación
-        const instructions = document.getElementById('instructions').textContent = "Instructions: " + strInstructions;
+    var ingredientsList = [];
+    var measuresList = [];
 
-        // Agrega titulo ingredientes
-        const list_ingredients = document.getElementById('list_ingredients').textContent = "Ingredients";
-
-        // Agrega la lista de ingredientes -- Duda como agregar los ingredientes en un ciclo for
-        const ingredients = document.getElementById('ingredients')
-        ingredients.innerHTML = strIngredient1 +  strIngredient2 + strIngredient3
-    
+    //Obteniendo los ingredientes en un array
+    for (let i = 9; i <= 28; i++) {
+        if (!mealArray[i]) break;
+        ingredientsList.push(mealArray[i]);
     }
+
+    //Obteniendo las medidas en un array
+    for (let i = 29; i <= 48; i++) {
+        if (mealArray[i] === "" || mealArray[i] === " ") break;
+        measuresList.push(mealArray[i]);
+    }
+
+    // Agrega la imagen de la receta
+    document.getElementById('thumb').src = strMealThumb;
+
+    // Agrega el titulo de la receta
+    document.getElementById('title').textContent = strMeal;
+
+    // Agrega las instrucciones de preparación
+    document.getElementById('instructions').textContent = "Instructions: " + strInstructions;
+
+    // Agrega titulo ingredientes
+    document.getElementById('ingredients').textContent = "Ingredients";
+
+    // Agrega la lista de ingredientes 
+    const listGenerate = document.getElementById('ingredients_list')
+
+    //Selecciona el articulo que contiene los ingredientes
+    const ingrArticle = document.getElementById('ingredients_article')
+    
+
+    if(listGenerate.childNodes.length){
+        listGenerate.remove();
+        newUl = document.createElement('ul');
+        newUl.setAttribute('id','ingredients_list');
+        ingrArticle.appendChild(newUl);
+    }
+
+    // Muestra la lista de medidas e ingredientes
+    var i = 0;
+    ingredientsList.forEach(ingredient => {
+        const li = document.createElement('li')
+        document.getElementById('ingredients_list').appendChild(li)
+        li.textContent = measuresList[i] + " " + ingredient;
+        i++
+    });
+
+    
+}
