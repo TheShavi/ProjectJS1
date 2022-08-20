@@ -40,4 +40,8 @@
 .instrucciones{
     border: 1px solid green;
 }
+
+#thumb{
+    width: 50%;
+}
 /*---------------------------------------*/
