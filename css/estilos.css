@@ -61,22 +61,22 @@
     flex-wrap: wrap;
 }
 .nombre{
-    /* background-color: rgb(141, 141, 241); */
+    background-color: rgb(141, 141, 241);
     margin: 0px 10px 10px 10px;
 }
 .imagen{
-    /* background-color: rgb(219, 104, 91); */
+    background-color: rgb(219, 104, 91);
     margin: 0px 0px 0px 10px;
 }
 .ingredientes{
-    /* background-color: rgb(236, 232, 114); */
+    background-color: rgb(236, 232, 114);
     margin: 0px 10px 0px 10px;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 .instrucciones{
-    /* background-color: rgb(52, 187, 59); */
+    background-color: rgb(52, 187, 59);
     margin: 0px 10px 0px 10px;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 #thumb{
