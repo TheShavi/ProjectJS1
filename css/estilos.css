@@ -49,6 +49,7 @@
     width: 70%;
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 /*---------------------------------------*/
 /* detalles recetas*/
