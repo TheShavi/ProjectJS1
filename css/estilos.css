@@ -28,18 +28,18 @@
     border: 1px solid red;
     display: grid;
     grid-column:auto;
-    background-color: goldenrod;
+    /* background-color: goldenrod; */
     font-size: 1rem;
     padding: 1em;
     margin: 1em;
 }
 .titulo{
-    background-color: rgb(39, 206, 17);
+    /* background-color: rgb(39, 206, 17); */
     flex-grow: 1;
     height: 25px;
 }
 .ima{
-    background-color: rgb(181, 102, 226);
+    /* background-color: rgb(181, 102, 226); */
     flex-grow: 1;
     height: 100px;
 }
@@ -83,6 +83,7 @@
     display: block;
     margin: auto;
     padding-top: 50px ;
+    width: 75%;
     
 }
 /*---------------------------------------*/
