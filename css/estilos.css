@@ -20,19 +20,20 @@
 .resultados_recetas{
     border: 1px solid rgb(30, 2, 82);
     min-height: 100px;
-    margin: 15px 15px 15px 15px;
+    margin: 20px 15px 15px 20px;
 }
 .resultados{
     height: 10em;
-    width: 150px;
+    width: 200px;
     border: 1px solid red;
-    display: grid;
+    display: inline-table;
     grid-column:auto;
     /* background-color: goldenrod; */
     font-size: 1rem;
     padding: 1em;
     margin: 1em;
 }
+
 .titulo{
     /* background-color: rgb(39, 206, 17); */
     flex-grow: 1;
@@ -45,7 +46,7 @@
 }
 
 .result_thumb{
-    width: 90%;
+    width: 70%;
     display: block;
     margin: auto;
 }

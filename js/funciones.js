@@ -156,7 +156,7 @@ async function Search(){
     }
     
     data.meals
-        .filter((meal, index) => index < 5)
+        .filter((meal, index) => index < 10)
         .forEach((meal, index) => addMeal(index, meal));
 }
 
@@ -174,7 +174,7 @@ function clearDetails(){
 
 function addMeal(i, meal){
     const {idMeal} = meal;
-    const art = document.createElement('article');
+    const art = document.createElement('span');
     art.id = `result${i}`;
     art.id = idMeal;
     art.dataset.id = idMeal
