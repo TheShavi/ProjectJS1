@@ -1,6 +1,6 @@
 // Método para obtener una receta al azar
 
-async function Random() {
+async function Random(){
 
     let rand_url = 'https://themealdb.com/api/json/v1/1/random.php';
     const response = await fetch(rand_url);
@@ -65,7 +65,7 @@ async function Random() {
     });
 }
 
-async function getMealdById(mealId) {
+async function getMealdById(mealId){
 
     let rand_url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
     const response = await fetch(rand_url);
@@ -113,12 +113,7 @@ async function getMealdById(mealId) {
     const ingrArticle = document.getElementById('ingredients_article')
     
 
-    if(listGenerate.childNodes.length){
-        listGenerate.remove();
-        newUl = document.createElement('ul');
-        newUl.setAttribute('id','ingredients_list');
-        ingrArticle.appendChild(newUl);
-    }
+    clearDetails();
 
     // Muestra la lista de medidas e ingredientes
     var i = 0;
@@ -130,16 +125,15 @@ async function getMealdById(mealId) {
     });
 }
 
-async function Search()
-{
+async function Search(){
     const input = document.getElementById('input').value;
 
     if (!input.length) {
         Swal.fire({
-            title: 'Error!',
+            title: 'Error',
             text: 'Ingresa un valor valido para poder continuar',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'OK'
         })
         return false
     }
@@ -153,10 +147,10 @@ async function Search()
 
     if (!data.meals) {
         Swal.fire({
-            title: 'Error!',
+            title: 'Error',
             text: 'No se encontraron registros validos',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'OK'
         })
         return false;
     }
@@ -166,15 +160,19 @@ async function Search()
         .forEach((meal, index) => addMeal(index, meal));
 }
 
-function clearResults()
-{
+function clearResults(){
     var container = document.getElementById('all_results')
-    
     container.innerHTML = '';
 }
 
-function addMeal(i, meal)
-{
+function clearDetails(){
+    var container = document.getElementsByClassName('detalles_recetas');
+    var container2 = document.getElementById('ingredients_list');
+    container.innerHTML = '';
+    container2.innerHTML = '';
+}
+
+function addMeal(i, meal){
     const {idMeal} = meal;
     const art = document.createElement('article');
     art.id = `result${i}`;
@@ -185,7 +183,7 @@ function addMeal(i, meal)
     const title = document.createElement('h6');
     title.id = `result_title${i}`;
     title.className = 'titulo';
-    title.innerHTML = meal.strMeal;
+    title.textContent = meal.strMeal;
 
     const div = document.createElement('div');
     div.id = `thumb_container${i}`
@@ -200,8 +198,6 @@ function addMeal(i, meal)
     art.appendChild(title);
     art.appendChild(div);
     div.appendChild(img);
-
-    console.log(art.id)
 }
 
 $(function(){

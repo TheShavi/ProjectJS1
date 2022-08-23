@@ -15,49 +15,39 @@
     <section class="search col-lg-12">
         <div >
             <article class="col-lg-12">
-                <form name="search_combo" id="search" method="" action="">
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">link receta 1</option>
-                        <option value="2">link receta 2</option>
-                        <option value="3">link receta 3</option>
-                      </select>
-                </form>
-            </article>
-            <article class="col-lg-12">
-                <form class="row g-3 needs-validation" name="search_txtBox" id="search" method="" action="">
-                    <div class="col-md-8">
-                        <form>
-                            <input type="text" class="form-control" id="input" required placeholder="Busca una receta">
-                        </form>
-                        <div class="valid-feedback">
-                        Looks good!
-                        </div>
+                
+                <div class="col-md-8">
+                    
+                    <input type="text" class="form-control" id="input" required placeholder="Busca una receta">
+                    
+                    <div class="valid-feedback">
+                    Looks good!
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary" type="submit" onclick="Search();">Buscar receta</button>
-                    </div>  
-                    <div class="col-md-2">
-                        <button class="btn btn-primary" type="submit" onclick="Random();">Receta aleatoria</button>
-                    </div> 
-                </form>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="submit" onclick="Search();">Buscar receta</button>
+                </div>  
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="submit" onclick="Random();">Receta aleatoria</button>
+                </div> 
+                
             </article>
             <!-- Resultados de recetas -->
-            <span id="gen_results">
-                <article id="all_results" class="resultados_recetas">
+            
+            <article id="all_results" class="resultados_recetas">
 
-                    <article id="result0" class="resultados">
-                        <h6 id="result_title0" class="titulo">
-                            
-                        </h6>
+                <article id="result0" class="resultados">
+                    <h6 id="result_title0" class="titulo">
+                        
+                    </h6>
 
-                        <div id="thumb_container0" class="ima">
-                            <img id="result_thumb0" class="result_thumb" src="" alt="">
-                        </div>
-                    </article>
-                    
+                    <div id="thumb_container0" class="ima">
+                        <img id="result_thumb0" class="result_thumb" src="" alt="">
+                    </div>
                 </article>
-            </span>
+                
+            </article>
+            
             <!-- Fin de resultaados de recetas -->
 
             <!-- Detalles de recetas -->
