@@ -69,22 +69,64 @@ async function Search(){
         })
         return false;
     }
+
+    helperAddMeal(data.meals);
     
-    data.meals
-        .filter((meal, index) => index < 10)
-        .forEach((meal, index) => addMeal(index, meal));
+}
+
+function helperAddMeal(meals){
+    meals.forEach((meal, index) => addMeal(index, meal));
+}
+
+async function listCategories(){
+
+    const list = document.getElementById('list');
+    
+    const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (list.childElementCount>14) {
+        clearCategories();
+    }
+    
+    data.meals.forEach(category => {
+        const cat = document.createElement('option');
+        const option = document.getElementById('option')
+        const {strCategory} = category;
+        cat.className = 'trash_category'
+        cat.textContent = strCategory;
+        insertAfter(cat,option)
+    });
+}
+
+function insertAfter(newNode, existingNode) {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+async function selectCategory(cat){
+    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat.trim()}`
+    const response = await fetch (url)
+    const data = await response.json();
+    clearResults();
+    helperAddMeal(data.meals)
 }
 
 function clearResults(){
-    var container = document.getElementById('all_results')
+    let container = document.getElementById('all_results')
     container.innerHTML = '';
 }
 
 function clearDetails(){
-    var container = document.getElementsByClassName('detalles_recetas');
-    var container2 = document.getElementById('ingredients_list');
+    let container = document.getElementsByClassName('detalles_recetas');
+    let container2 = document.getElementById('ingredients_list');
     container.innerHTML = '';
     container2.innerHTML = '';
+}
+
+function clearCategories(){
+    let container = document.getElementsByClassName('trash_category')
+    container.remove();
 }
 
 function addMeal(i, meal){
