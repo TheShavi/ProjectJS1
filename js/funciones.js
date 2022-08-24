@@ -8,8 +8,6 @@ async function getMealdById(mealId){
     const response = await fetch(url);
     const data = await response.json();
 
-    const { meals, idMeal, strMeal, strCategory, strInstructions, strMealThumb, strYoutube } = data.meals[0];
-
     //Conviriendo los contenidos de Json en un array
     mealArray = Object.values(data.meals[0]);
 
@@ -28,27 +26,7 @@ async function getMealdById(mealId){
         measuresList.push(mealArray[i]);
     }
 
-    // Agrega la imagen de la receta
-    document.getElementById('thumb').src = strMealThumb;
-
-    // Agrega el titulo de la receta
-    document.getElementById('title').textContent = strMeal;
-
-    // Agrega titulo ingredientes
-    document.getElementById('instructions_title').textContent = "Instructions";
-
-    // Agrega las instrucciones de preparación
-    document.getElementById('instructions').textContent = strInstructions;
-
-    // Agrega titulo ingredientes
-    document.getElementById('ingredients').textContent = "Ingredients";
-
-    // Agrega la lista de ingredientes 
-    const listGenerate = document.getElementById('ingredients_list')
-
-    //Selecciona el articulo que contiene los ingredientes
-    const ingrArticle = document.getElementById('ingredients_article')
-    
+    addMealDetailed(data.meals[0])
 
     clearDetails();
 
@@ -135,6 +113,18 @@ function addMeal(i, meal){
     art.appendChild(title);
     art.appendChild(div);
     div.appendChild(img);
+}
+
+function addMealDetailed(meal){
+    const {strMeal, strInstructions, strMealThumb, strYoutube } = meal;
+    var url = strYoutube.replace("watch?v=", "embed/");
+    
+    document.getElementById('thumb').src = strMealThumb;
+    document.getElementById('title').textContent = strMeal;
+    document.getElementById('instructions_title').textContent = "Instructions";
+    document.getElementById('instructions').textContent = strInstructions;
+    document.getElementById('ingredients').textContent = "Ingredients";
+    document.getElementById('video').src = url;
 }
 
 $(function(){
