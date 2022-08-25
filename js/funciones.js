@@ -167,6 +167,7 @@ function addMealDetailed(meal){
     document.getElementById('instructions').textContent = strInstructions;
     document.getElementById('ingredients').textContent = "Ingredients";
     document.getElementById('video').src = url;
+
 }
 
 $(function(){
@@ -176,3 +177,4 @@ $(function(){
 
     });
 });
+
