@@ -1,10 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 **{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .title{
@@ -16,9 +18,38 @@
 
 /* Resultados recetas*/
 .resultados_recetas{
-    border: 1px solid cornflowerblue;
+    border: 1px solid rgb(30, 2, 82);
     min-height: 100px;
-    margin: 15px 15px 15px 15px;
+    margin: 20px 15px 15px 20px;
+}
+.resultados{
+    height: 10em;
+    width: 200px;
+    border: 1px solid red;
+    display: inline-table;
+    grid-column:auto;
+    /* background-color: goldenrod; */
+    font-size: 1rem;
+    padding: 1em;
+    margin: 1em;
+}
+
+.titulo{
+    /* background-color: rgb(39, 206, 17); */
+    flex-grow: 1;
+    height: 25px;
+}
+.ima{
+    /* background-color: rgb(181, 102, 226); */
+    flex-grow: 1;
+    height: 100px;
+}
+
+.result_thumb{
+    width: 70%;
+    display: block;
+    margin: auto;
+    cursor: pointer;
 }
 /*---------------------------------------*/
 /* detalles recetas*/
@@ -31,13 +62,60 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.nombre{
+    background-color: rgb(141, 141, 241);
+    margin: 0px 10px 10px 10px;
+}
 .imagen{
-    border: 1px solid red;
+    background-color: rgb(219, 104, 91);
+    margin: 0px 0px 0px 10px;
 }
 .ingredientes{
-    border: 1px solid blue;
+    background-color: rgb(236, 232, 114);
+    margin: 0px 10px 0px 10px;
+    overflow-y: scroll;
 }
 .instrucciones{
-    border: 1px solid green;
+    background-color: rgb(52, 187, 59);
+    margin: 0px 10px 0px 10px;
+    overflow-y: scroll;
+}
+
+#thumb{
+    display: block;
+    margin: auto;
+    padding-top: 50px ;
+    width: 75%;
+    
 }
 /*---------------------------------------*/
+
+.contenedor{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr;
+    grid-template-areas:
+    "box1 box1"
+    "box2 box3"
+    "box2 box4" ;
+}
+.box1{
+    grid-area: box1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.box2{
+    grid-area: box2;
+    height: 85vh;
+}
+.box3{
+    grid-area: box3;
+    height: 42vh;
+}
+
+.box4{
+    grid-area: box4;
+    height: 42vh;
+}
