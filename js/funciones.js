@@ -133,7 +133,6 @@ function addMeal(i, meal){
     const {idMeal} = meal;
     const art = document.createElement('span');
     art.id = `result${i}`;
-    art.id = idMeal;
     art.dataset.id = idMeal
     art.className = "resultados";
 
@@ -161,13 +160,29 @@ function addMealDetailed(meal){
     const {strMeal, strInstructions, strMealThumb, strYoutube } = meal;
     var url = strYoutube.replace("watch?v=", "embed/");
     
+    //Agrega contenido 
     document.getElementById('thumb').src = strMealThumb;
     document.getElementById('title').textContent = strMeal;
     document.getElementById('instructions_title').textContent = "Instructions";
     document.getElementById('instructions').textContent = strInstructions;
     document.getElementById('ingredients').textContent = "Ingredients";
+    document.getElementById('video_title').textContent = "Tutorial";
     document.getElementById('video').src = url;
 
+    //Agrega estilo a cada contenedor
+    document.getElementById('box1').className = "box1 nombre";
+    document.getElementById('box2').className = "box2 imagen";
+    document.getElementById('ingredients_article').className = "box3 ingredientes";
+    document.getElementById('box4').className = "box4 instrucciones";
+}
+
+function toggleResults(){
+    var results = document.getElementById("all_results");
+    if (results.style.display === "none") {
+        results.style.display = "block";
+    } else {
+        results.style.display = "none";
+    }
 }
 
 $(function(){
@@ -177,4 +192,5 @@ $(function(){
 
     });
 });
+
 

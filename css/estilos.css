@@ -22,11 +22,6 @@
 /*------------------------------------*/
 
 /* Resultados recetas*/
-.resultados_recetas{
-    border: 1px solid rgb(30, 2, 82);
-    min-height: 100px;
-    margin: 20px 15px 15px 20px;
-}
 .resultados{
     height: 10em;
     width: 200px;
@@ -58,6 +53,7 @@
 }
 /*---------------------------------------*/
 /* detalles recetas*/
+/*
 .detalles_recetas{
     border: 1px solid rgb(237, 100, 168);
     min-height: 100px;
@@ -67,9 +63,10 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+*/
 .nombre{
     background-color: rgb(141, 141, 241);
-    margin: 0px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 .imagen{
     background-color: rgb(219, 104, 91);
@@ -89,14 +86,18 @@
 #thumb{
     display: block;
     margin: auto;
-    padding-top: 50px ;
+    padding-top: 30px;
     width: 40%;
 }
 
 #video{
     display: block;
     margin: auto;
-    padding-top: 50px ;
+}
+
+#video_title{
+    padding-top: 30px;
+    justify-content: center;
 }
 /*---------------------------------------*/
 
@@ -111,6 +112,7 @@
     "box2 box4" ;
 }
 .box1{
+    
     grid-area: box1;
     display: flex;
     justify-content: space-around;
