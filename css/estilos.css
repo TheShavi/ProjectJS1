@@ -14,6 +14,11 @@
 }
 /* Busqueda */
 .search{}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+ }
 /*------------------------------------*/
 
 /* Resultados recetas*/
@@ -85,8 +90,13 @@
     display: block;
     margin: auto;
     padding-top: 50px ;
-    width: 75%;
-    
+    width: 40%;
+}
+
+#video{
+    display: block;
+    margin: auto;
+    padding-top: 50px ;
 }
 /*---------------------------------------*/
 

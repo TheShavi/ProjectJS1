@@ -14,7 +14,7 @@
     </header>
     <section class="search col-lg-12">
         <div >
-            <article class="col-lg-12">
+            <article class="col-lg-12 flex">
                 <form name="search_combo" id="search" method="" action="">
                     <select id="list" onclick="listCategories();" onchange="selectCategory(this.options[this.selectedIndex].value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option id="option" hidden selected  >Food Categories</option>
@@ -22,21 +22,17 @@
                     </select>
                 </form>
             </article>
-            <article class="col-lg-12">
-                <div class="col-md-8">
+            <article  class="col-lg-12">
+                <div class="col-md-5 d-block">
                     <input type="text" class="form-control" id="input" required placeholder="Enter a Recipe">
                     <div class="valid-feedback">
                     Looks good!
                     </div>
                 </div>
-
-                <div class="col-md-2">
+                <div class="col-md-5 d-block">
                     <button class="btn btn-primary" type="submit" onclick="Search();">Search Recipe</button>
-                </div>  
-
-                <div class="col-md-2">
-                    <button class="btn btn-primary" type="submit" onclick="getMealdById();">Random Recipe</button>
-                </div>               
+                    <button class="btn btn-primary " type="submit" onclick="getMealdById();">Random Recipe</button>
+                </div>              
             </article>
             <!-- Resultados de recetas -->
             
@@ -53,6 +49,9 @@
                 </article>
                 <article class="box2 imagen">
                     <img id="thumb" >
+                    <article >
+                        <iframe id="video" width="420" height="315" src=" " frameborder="0" allowfullscreen></iframe>
+                    </article>
                 </article>
                 <article id="ingredients_article" class="box3 ingredientes">
                     <h4 id="ingredients"></h4>
@@ -62,9 +61,7 @@
                     <h4 id="instructions_title"></h4>
                     <p id="instructions"></p>
                 </article>
-                <article >
-                    <iframe id="video" width="420" height="315" src=" " frameborder="0" allowfullscreen></iframe>
-                </article>
+                
             </article>
             <!-- Fin detalles de recetas -->
         </div>
