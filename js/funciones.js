@@ -193,4 +193,9 @@ $(function(){
     });
 });
 
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#toggle_button").toggleClass("btn, btn-secondary");
+    });
+});
 

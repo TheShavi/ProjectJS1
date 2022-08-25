@@ -18,7 +18,8 @@
 .flex {
     display: flex;
     flex-direction: row;
- }
+}
+
 /*------------------------------------*/
 
 /* Resultados recetas*/
@@ -45,6 +46,12 @@
     height: 100px;
 }
 
+#all_results{
+    min-height: 100px;
+    margin: 20px 15px 15px 20px;
+    overflow-y: scroll;
+    height: 400px;
+}
 .result_thumb{
     width: 70%;
     display: block;
