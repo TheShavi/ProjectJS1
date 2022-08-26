@@ -1,3 +1,10 @@
+
+const input = document.querySelector('#input');
+input.addEventListener("input", (input) => {
+    const currentText = input.target.value.toLowerCase();
+    Search(currentText)
+});
+
 async function getMealdById(mealId){
 
     let url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
@@ -39,10 +46,10 @@ async function getMealdById(mealId){
     });
 }
 
-async function Search(){
+async function Search(dynamicInput){
     const input = document.getElementById('input').value;
 
-    if (!input.length) {
+    if (!input.length && dynamicInput === undefined) {
         Swal.fire({
             title: 'Error',
             text: 'Ingresa un valor valido para poder continuar',
@@ -52,21 +59,27 @@ async function Search(){
         return false
     }
 
+
     let url = `https://themealdb.com/api/json/v1/1/search.php?s=${input.trim()}`;
+
+    if (dynamicInput) {
+        url = `https://themealdb.com/api/json/v1/1/search.php?s=${dynamicInput}`
+        console.log(dynamicInput)
+    }
 
     const data = await fetch(url).then((response) => response.json());
     
     clearResults();
 
-    if (!data.meals) {
-        Swal.fire({
-            title: 'Error',
-            text: 'No se encontraron registros validos',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        })
-        return false;
-    }
+    // if (!data.meals) {
+    //     Swal.fire({
+    //         title: 'Error',
+    //         text: 'No se encontraron registros validos',
+    //         icon: 'error',
+    //         confirmButtonText: 'OK'
+    //     })
+    //     return false;
+    // }
 
     helperAddMeal(data.meals);
     
