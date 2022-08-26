@@ -5,8 +5,7 @@ async function getMealdById(mealId){
     if (mealId === undefined) {
         url = 'https://themealdb.com/api/json/v1/1/random.php'
     }
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetch(url).then((response) => response.json());
 
     //Conviriendo los contenidos de Json en un array
     mealArray = Object.values(data.meals[0]);
@@ -53,10 +52,9 @@ async function Search(){
         return false
     }
 
-    let search_url = `https://themealdb.com/api/json/v1/1/search.php?s=${input.trim()}`;
+    let url = `https://themealdb.com/api/json/v1/1/search.php?s=${input.trim()}`;
 
-    const response = await fetch(search_url);
-    const data = await response.json();
+    const data = await fetch(url).then((response) => response.json());
     
     clearResults();
 
@@ -81,10 +79,8 @@ function helperAddMeal(meals){
 async function listCategories(){
 
     const list = document.getElementById('list');
-    
     const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetch(url).then((response) => response.json());
 
     if (list.childElementCount>14) {
         clearCategories();
@@ -106,8 +102,7 @@ function insertAfter(newNode, existingNode) {
 
 async function selectCategory(cat){
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat.trim()}`
-    const response = await fetch (url)
-    const data = await response.json();
+    const data = await fetch(url).then((response) => response.json());
     clearResults();
     helperAddMeal(data.meals)
 }
@@ -198,4 +193,3 @@ $(document).ready(function(){
         $("#toggle_button").toggleClass("btn, btn-secondary");
     });
 });
-
