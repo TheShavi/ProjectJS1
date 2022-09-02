@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 ** {
   margin: 0;
   padding: 0;
@@ -12,9 +13,8 @@
 .title {
   text-align: left;
 }
+
 /* Busqueda */
-.search {
-}
 
 .flex {
   display: flex;
@@ -30,91 +30,70 @@
   border: 1px solid red;
   display: inline-table;
   grid-column: auto;
-  /* background-color: goldenrod; */
   font-size: 1rem;
   padding: 1em;
   margin: 1em;
 }
 
+.card-img-top {
+  cursor: pointer;
+}
+
 .titulo {
-  /* background-color: rgb(39, 206, 17); */
   flex-grow: 1;
   height: 25px;
 }
+
 .ima {
-  /* background-color: rgb(181, 102, 226); */
   flex-grow: 1;
   height: 100px;
 }
 
-#all_results {
-  min-height: 100px;
-  margin: 20px 15px 15px 20px;
-  
-}
 .result_thumb {
   width: 70%;
   display: block;
   margin: auto;
   cursor: pointer;
 }
-/*---------------------------------------*/
-/* detalles recetas*/
-/*
-.detalles_recetas{
-    border: 1px solid rgb(237, 100, 168);
-    min-height: 100px;
-    margin: 15px 15px 15px 15px;
-    
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-*/
+
 .nombre {
-  /*     background-color: rgb(141, 141, 241);
- */
   margin: 10px 10px 10px 10px;
 }
+
 .imagen {
-  /*     background-color: rgb(219, 104, 91);
- */
   margin: 0px 0px 0px 10px;
 }
+
 .ingredientes {
-  /*     background-color: rgb(236, 232, 114);
- */
   margin: 0px 10px 0px 10px;
-/*   overflow-y: scroll;
- */}
+}
+
 .instrucciones {
-  /*     background-color: rgb(52, 187, 59);
- */
   margin: 0px 10px 0px 10px;
-/*   overflow-y: scroll;
- */}
+}
 
 #thumb {
   display: block;
   margin: auto;
   padding-top: 30px;
-  width: 80%;
+  width: 50%;
 }
 
 #video {
   display: block;
   margin: auto;
+  width: 50%;
 }
 
 #video_title {
   padding-top: 30px;
   justify-content: center;
 }
+
 /*---------------------------------------*/
 
 .contenedor {
-/*   height: 100vh;
- */  display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.5fr 1.5fr;
   grid-template-areas:
@@ -122,16 +101,19 @@
     "box2 box3"
     "box2 box4";
 }
+
 .box1 {
   grid-area: box1;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .box2 {
   grid-area: box2;
   height: 85vh;
 }
+
 .box3 {
   grid-area: box3;
   height: 100%;

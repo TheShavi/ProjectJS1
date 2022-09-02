@@ -1,10 +1,3 @@
-
-const input = document.querySelector('#input');
-input.addEventListener("input", (input) => {
-    const currentText = input.target.value.toLowerCase();
-    Search(currentText)
-});
-
 async function getMealdById(mealId){
 
     let url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
@@ -46,10 +39,10 @@ async function getMealdById(mealId){
     });
 }
 
-async function Search(dynamicInput){
+async function Search(){
     const input = document.getElementById('input').value;
 
-    if (!input.length && dynamicInput === undefined) {
+    if (!input.length) {
         Swal.fire({
             title: 'Error',
             text: 'Ingresa un valor valido para poder continuar',
@@ -62,24 +55,13 @@ async function Search(dynamicInput){
 
     let url = `https://themealdb.com/api/json/v1/1/search.php?s=${input.trim()}`;
 
-    if (dynamicInput) {
-        url = `https://themealdb.com/api/json/v1/1/search.php?s=${dynamicInput}`
-        console.log(dynamicInput)
-    }
-
     const data = await fetch(url).then((response) => response.json());
     
     clearResults();
 
-    // if (!data.meals) {
-    //     Swal.fire({
-    //         title: 'Error',
-    //         text: 'No se encontraron registros validos',
-    //         icon: 'error',
-    //         confirmButtonText: 'OK'
-    //     })
-    //     return false;
-    // }
+    const results = document.getElementById('all_results');
+    results.style.overflowY = ''
+    results.style.height = 'auto'
 
     helperAddMeal(data.meals);
     
@@ -118,6 +100,12 @@ async function selectCategory(cat){
     const data = await fetch(url).then((response) => response.json());
     clearResults();
     helperAddMeal(data.meals)
+
+    const results = document.getElementById('all_results');
+    results.style.margin = '20px 15px 15px 20px'
+    results.style.minHeight = '100px'
+    results.style.overflowY = 'scroll'
+    results.style.height = '280px'
 }
 
 function clearResults(){
@@ -147,12 +135,12 @@ function addMeal(i, meal){
 
     const img = document.createElement('img');
     img.id = `result_thumb${i}`;
+    img.dataset.id = idMeal;
     img.className = "card-img-top";
     img.src = meal.strMealThumb;
 
     const art = document.createElement('div');
     art.id = `result${i}`;
-    art.dataset.id = idMeal
     art.className = "card-body";
 
     const title = document.createElement('h6');
@@ -160,12 +148,12 @@ function addMeal(i, meal){
     title.className = 'card-title';
     title.textContent = meal.strMeal;
 
-    document.getElementById('all_results').appendChild(div);
+    document.getElementById('all_results').appendChild(span);
+    span.appendChild(div)
     div.appendChild(img);
     art.appendChild(title);
     div.appendChild(art);
-    document.getElementById('all_results').appendChild(span);
-
+    
 }
 
 function addMealDetailed(meal){
@@ -178,7 +166,7 @@ function addMealDetailed(meal){
     document.getElementById('instructions_title').textContent = "Instructions";
     document.getElementById('instructions').textContent = strInstructions;
     document.getElementById('ingredients').textContent = "Ingredients";
-    document.getElementById('video_title').textContent = "";
+    document.getElementById('video_title').textContent = "Tutorial";
     document.getElementById('video').src = url;
 
     //Agrega estilo a cada contenedor
@@ -191,13 +179,10 @@ function addMealDetailed(meal){
 
 function toggleResults(){
 
-
     var results = document.getElementById("all_results");
-    var detallesRecetas = document.getElementById("detalles_recetas");
     if (results.style.display === "none") {
         results.style.display = "block";
         document.getElementById('toggle_button').textContent="Hide results";
-       // detallesRecetas.style.display="none";
 
     } else {
         document.getElementById('toggle_button').textContent="Show results";
@@ -207,12 +192,13 @@ function toggleResults(){
 }
 
 $(function(){
-    $(document).on('click', '.resultados img', function() {
-        const mealId = $(this).parents('.resultados').data('id');
+    $(document).on('click', '.card img', function() {
+        const mealId = $(this).attr('data-id')
         getMealdById(mealId);
 
     });
 });
+
 
 $(document).ready(function(){
     $("#toggle_button").click(function(){
