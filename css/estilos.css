@@ -1,62 +1,62 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-**{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+** {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.title{
-    text-align: center;
+.title {
+  text-align: left;
 }
 /* Busqueda */
-.search{}
+.search {
+}
 
 .flex {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 /*------------------------------------*/
 
 /* Resultados recetas*/
-.resultados{
-    height: 10em;
-    width: 200px;
-    border: 1px solid red;
-    display: inline-table;
-    grid-column:auto;
-    /* background-color: goldenrod; */
-    font-size: 1rem;
-    padding: 1em;
-    margin: 1em;
+.resultados {
+  height: 10em;
+  width: 200px;
+  border: 1px solid red;
+  display: inline-table;
+  grid-column: auto;
+  /* background-color: goldenrod; */
+  font-size: 1rem;
+  padding: 1em;
+  margin: 1em;
 }
 
-.titulo{
-    /* background-color: rgb(39, 206, 17); */
-    flex-grow: 1;
-    height: 25px;
+.titulo {
+  /* background-color: rgb(39, 206, 17); */
+  flex-grow: 1;
+  height: 25px;
 }
-.ima{
-    /* background-color: rgb(181, 102, 226); */
-    flex-grow: 1;
-    height: 100px;
+.ima {
+  /* background-color: rgb(181, 102, 226); */
+  flex-grow: 1;
+  height: 100px;
 }
 
-#all_results{
-    min-height: 100px;
-    margin: 20px 15px 15px 20px;
-    overflow-y: scroll;
-    height: 400px;
+#all_results {
+  min-height: 100px;
+  margin: 20px 15px 15px 20px;
+  
 }
-.result_thumb{
-    width: 70%;
-    display: block;
-    margin: auto;
-    cursor: pointer;
+.result_thumb {
+  width: 70%;
+  display: block;
+  margin: auto;
+  cursor: pointer;
 }
 /*---------------------------------------*/
 /* detalles recetas*/
@@ -71,70 +71,86 @@
     flex-wrap: wrap;
 }
 */
-.nombre{
-    background-color: rgb(141, 141, 241);
-    margin: 10px 10px 10px 10px;
+.nombre {
+  /*     background-color: rgb(141, 141, 241);
+ */
+  margin: 10px 10px 10px 10px;
 }
-.imagen{
-    background-color: rgb(219, 104, 91);
-    margin: 0px 0px 0px 10px;
+.imagen {
+  /*     background-color: rgb(219, 104, 91);
+ */
+  margin: 0px 0px 0px 10px;
 }
-.ingredientes{
-    background-color: rgb(236, 232, 114);
-    margin: 0px 10px 0px 10px;
-    overflow-y: scroll;
-}
-.instrucciones{
-    background-color: rgb(52, 187, 59);
-    margin: 0px 10px 0px 10px;
-    overflow-y: scroll;
+.ingredientes {
+  /*     background-color: rgb(236, 232, 114);
+ */
+  margin: 0px 10px 0px 10px;
+/*   overflow-y: scroll;
+ */}
+.instrucciones {
+  /*     background-color: rgb(52, 187, 59);
+ */
+  margin: 0px 10px 0px 10px;
+/*   overflow-y: scroll;
+ */}
+
+#thumb {
+  display: block;
+  margin: auto;
+  padding-top: 30px;
+  width: 80%;
 }
 
-#thumb{
-    display: block;
-    margin: auto;
-    padding-top: 30px;
-    width: 40%;
+#video {
+  display: block;
+  margin: auto;
 }
 
-#video{
-    display: block;
-    margin: auto;
-}
-
-#video_title{
-    padding-top: 30px;
-    justify-content: center;
+#video_title {
+  padding-top: 30px;
+  justify-content: center;
 }
 /*---------------------------------------*/
 
-.contenedor{
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 1.5fr;
-    grid-template-areas:
+.contenedor {
+/*   height: 100vh;
+ */  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  grid-template-areas:
     "box1 box1"
     "box2 box3"
-    "box2 box4" ;
+    "box2 box4";
 }
-.box1{
-    
-    grid-area: box1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.box1 {
+  grid-area: box1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.box2{
-    grid-area: box2;
-    height: 85vh;
+.box2 {
+  grid-area: box2;
+  height: 85vh;
 }
-.box3{
-    grid-area: box3;
-    height: 42vh;
+.box3 {
+  grid-area: box3;
+  height: 100%;
 }
 
-.box4{
-    grid-area: box4;
-    height: 42vh;
+.box4 {
+  grid-area: box4;
+  height: 100%;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("../images/bannerjs.png");
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }

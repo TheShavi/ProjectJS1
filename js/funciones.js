@@ -139,29 +139,34 @@ function clearCategories(){
 
 function addMeal(i, meal){
     const {idMeal} = meal;
-    const art = document.createElement('span');
-    art.id = `result${i}`;
-    art.dataset.id = idMeal
-    art.className = "resultados";
 
-    const title = document.createElement('h6');
-    title.id = `result_title${i}`;
-    title.className = 'titulo';
-    title.textContent = meal.strMeal;
-
+    const span = document.createElement('span');
     const div = document.createElement('div');
-    div.id = `thumb_container${i}`
-    div.className = "ima"
+    div.className = "card";
+    div.style="width: 150px; display: inline-table ;border: 1px solid orange;  padding: 1em; margin: 1em;";
 
     const img = document.createElement('img');
     img.id = `result_thumb${i}`;
-    img.className = "result_thumb";
+    img.className = "card-img-top";
     img.src = meal.strMealThumb;
 
-    document.getElementById('all_results').appendChild(art);
-    art.appendChild(title);
-    art.appendChild(div);
+    const art = document.createElement('div');
+    art.id = `result${i}`;
+    art.dataset.id = idMeal
+    art.className = "card-body";
+
+    const title = document.createElement('h6');
+    title.id = `result_title${i}`;
+    title.className = 'card-title';
+    title.style='cursor: pointer';
+    title.textContent = meal.strMeal;
+
+    document.getElementById('all_results').appendChild(div);
     div.appendChild(img);
+    art.appendChild(title);
+    div.appendChild(art);
+    document.getElementById('all_results').appendChild(span);
+
 }
 
 function addMealDetailed(meal){
@@ -174,7 +179,7 @@ function addMealDetailed(meal){
     document.getElementById('instructions_title').textContent = "Instructions";
     document.getElementById('instructions').textContent = strInstructions;
     document.getElementById('ingredients').textContent = "Ingredients";
-    document.getElementById('video_title').textContent = "Tutorial";
+    document.getElementById('video_title').textContent = "";
     document.getElementById('video').src = url;
 
     //Agrega estilo a cada contenedor
@@ -182,20 +187,30 @@ function addMealDetailed(meal){
     document.getElementById('box2').className = "box2 imagen";
     document.getElementById('ingredients_article').className = "box3 ingredientes";
     document.getElementById('box4').className = "box4 instrucciones";
+
 }
 
 function toggleResults(){
+
+
     var results = document.getElementById("all_results");
+    var detallesRecetas = document.getElementById("detalles_recetas");
     if (results.style.display === "none") {
         results.style.display = "block";
+        document.getElementById('toggle_button').textContent="Hide results";
+       // detallesRecetas.style.display="none";
+
     } else {
+        document.getElementById('toggle_button').textContent="Show results";
         results.style.display = "none";
+
     }
 }
 
 $(function(){
-    $(document).on('click', '.resultados img', function() {
-        const mealId = $(this).parents('.resultados').data('id');
+    $(document).on('click', '.card div', function() {
+        console.log(this);
+        const mealId = $(this).data('id');
         getMealdById(mealId);
 
     });
