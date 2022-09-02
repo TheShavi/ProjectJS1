@@ -59,6 +59,11 @@ async function Search(){
     
     clearResults();
 
+    const results = document.getElementById('all_results');
+    results.style.overflowY = ''
+    results.style.height = 'auto'
+
+
     helperAddMeal(data.meals);
     
 }
@@ -96,6 +101,12 @@ async function selectCategory(cat){
     const data = await fetch(url).then((response) => response.json());
     clearResults();
     helperAddMeal(data.meals)
+
+    const results = document.getElementById('all_results');
+    results.style.margin = '20px 15px 15px 20px'
+    results.style.minHeight = '100px'
+    results.style.overflowY = 'scroll'
+    results.style.height = '280px'
 }
 
 function clearResults(){
@@ -117,29 +128,33 @@ function clearCategories(){
 
 function addMeal(i, meal){
     const {idMeal} = meal;
-    const art = document.createElement('span');
-    art.id = `result${i}`;
-    art.dataset.id = idMeal
-    art.className = "resultados";
 
-    const title = document.createElement('h6');
-    title.id = `result_title${i}`;
-    title.className = 'titulo';
-    title.textContent = meal.strMeal;
-
+    const span = document.createElement('span');
     const div = document.createElement('div');
-    div.id = `thumb_container${i}`
-    div.className = "ima"
+    div.className = "card";
+    div.style="width: 150px; display: inline-table ;border: 1px solid orange;  padding: 1em; margin: 1em;";
 
     const img = document.createElement('img');
     img.id = `result_thumb${i}`;
-    img.className = "result_thumb";
+    img.dataset.id = idMeal;
+    img.className = "card-img-top";
     img.src = meal.strMealThumb;
 
-    document.getElementById('all_results').appendChild(art);
-    art.appendChild(title);
-    art.appendChild(div);
+    const art = document.createElement('div');
+    art.id = `result${i}`;
+    art.className = "card-body";
+
+    const title = document.createElement('h6');
+    title.id = `result_title${i}`;
+    title.className = 'card-title';
+    title.textContent = meal.strMeal;
+
+    document.getElementById('all_results').appendChild(span);
+    span.appendChild(div)
     div.appendChild(img);
+    art.appendChild(title);
+    div.appendChild(art);
+    
 }
 
 function addMealDetailed(meal){
@@ -160,24 +175,31 @@ function addMealDetailed(meal){
     document.getElementById('box2').className = "box2 imagen";
     document.getElementById('ingredients_article').className = "box3 ingredientes";
     document.getElementById('box4').className = "box4 instrucciones";
+
 }
 
 function toggleResults(){
+
     var results = document.getElementById("all_results");
     if (results.style.display === "none") {
         results.style.display = "block";
+        document.getElementById('toggle_button').textContent="Hide results";
+
     } else {
+        document.getElementById('toggle_button').textContent="Show results";
         results.style.display = "none";
+
     }
 }
 
 $(function(){
-    $(document).on('click', '.resultados img', function() {
-        const mealId = $(this).parents('.resultados').data('id');
+    $(document).on('click', '.card img', function() {
+        const mealId = $(this).attr('data-id')
         getMealdById(mealId);
 
     });
 });
+
 
 $(document).ready(function(){
     $("#toggle_button").click(function(){

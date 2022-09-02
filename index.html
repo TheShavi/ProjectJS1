@@ -11,67 +11,108 @@
 </head>
 <body>
     <header class="title col-lg-12" >
-        <h1>Recipe Finder</h1>
+<!--         <h1>Recipe Finder</h1>
+ -->       
+ <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+
+<a class="navbar-brand" href="#">
+      <img src="./images/deliIcon.png" alt="" width="60" height="24" class="d-inline-block align-text-top">
+      Recetas
+    </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Deli Recetas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <article class="card bg-img col-lg-12" style="width: 100%; align-items: center;  clear: none; ">
+    <div class="card"  style="margin-top:35%; width: 800px; text-align: center;">
+
+    <div class="card-body">
+    <div class="search" style="display:inline-table; width:600px">
+        <input type="text" class="form-control" id="input" required placeholder="Type a recipe">
+        <div class="valid-feedback">
+        Looks good!
+        </div>
+    </div>
+
+    <div class="search" style="display:inline-table">
+        <button class="btn" style="background-color:orange; color: white" type="submit" onclick="Search();">Search</button>
+
+    </div>
+</div>
+</div>         
+</article>
     </header>
     <section class="search col-lg-12">
-        <div >
-            <article class="col-lg-12 flex">
+        <div style="margin:30px">
+            
+
+            
+            <div  class="col-lg-2" style="display:inline-table;" >
+                <button  class="btn" style="background-color:white; color: orange"  type="submit" onclick="getMealdById();">Random Recipe</button>
+                              
+            </div>
+
+            <div class="col-lg-2" style="display:inline-table;" >
+                <button id="toggle_button" class="btn" style="background-color:white; color: orange;"  onclick="toggleResults();">Hide results</button>
+
+            </div>
+            <div class="col-lg-2 flex" style="display:inline-table;">
                 <form name="search_combo" id="search" method="" action="">
                     <select id="list" onclick="listCategories();" onchange="selectCategory(this.options[this.selectedIndex].value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option id="option" hidden selected  >Food Categories</option>
+                        <option id="option" hidden selected  >Categories</option>
                         <!-- Contenido de las categorias de las recetas -->
                     </select>
                 </form>
-            </article>
-            <article  class="col-lg-12">
-                <div class="col-md-5 d-block">
-                    <input type="text" class="form-control" id="input" required placeholder="Enter a Recipe">
-                    <div class="valid-feedback">
-                    Looks good!
-                    </div>
-                </div>
-                <div class="col-md-5 d-block">
-                    <button class="btn btn-primary" type="submit" onclick="Search();">Search Recipe</button>
-                    <button class="btn btn-primary " type="submit" onclick="getMealdById();">Random Recipe</button>
-                </div>              
-            </article>
+            </div>
             <!-- Resultados de recetas -->
-            <button id="toggle_button" class="btn btn-primary" onclick="toggleResults();">Toggle Results</button>
-            <article id="all_results" class="resultados_recetas">
+            <article  id="all_results" class="resultados_recetas">
                 <!-- Contenido de los resultados de las recetas -->
             </article>
             
             <!-- Fin de resultaados de recetas -->
 
             <!-- Detalles de recetas -->
-            <article class="contenedor detalles_recetas">
+            <article id="detalles_recetas" class="contenedor detalles_recetas">
                 <article id="box1" class="box1">
-                    <h1 id="title"></h3>
+                    <h1 id="title"></h1>
                 </article>
                 <article id="box2" class="box2">
-                    <img id="thumb" >
+                    <img id="thumb">
                     <article >
                         <center>
                             <h4 id="video_title"></h3>
-                        </center>
-                        <iframe id="video" width="420" height="315" src=" " frameborder="0" allowfullscreen></iframe>
+                        </center> 
+                        <iframe id="video" width="640" height="420" src=" " frameborder="0" allowfullscreen></iframe>
                     </article>
                 </article>
                 <article id="ingredients_article" class="box3">
-                    <h4 id="ingredients"></h4>
+                    <h2 id="ingredients"></h2>
                     <ul id="ingredients_list"></ul>
                 </article>
                 <article id="box4" class="box4">
-                    <h4 id="instructions_title"></h4>
+                    <h2 id="instructions_title"></h2>
                     <p id="instructions"></p>
                 </article>
             </article>
             <!-- Fin detalles de recetas -->
         </div>
     </section>
-    <footer>
-
-    </footer>
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/funciones.js"></script>
